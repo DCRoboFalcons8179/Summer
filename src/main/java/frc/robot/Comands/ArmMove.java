@@ -15,12 +15,16 @@ public class ArmMove extends Command {
   ArmControl armControl;
   DoubleSupplier power;
 
-  public ArmMove(DoubleSupplier Power, ArmControl armControl) {
+  public ArmMove(DoubleSupplier power, ArmControl armControl) {
 
     this.power = power;
     this.armControl = armControl;
     addRequirements(armControl);
     // Use addRequirements() here to declare subsystem dependencies.
+  }
+
+  public ArmMove() {
+    //TODO Auto-generated constructor stub
   }
 
   // Called when the command is initially scheduled.

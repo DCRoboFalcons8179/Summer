@@ -4,11 +4,9 @@
 
 package frc.robot.Subsystems;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
-import com.ctre.phoenix6.configs.Slot0Configs;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -25,10 +23,6 @@ public class ArmControl extends SubsystemBase {
     ArmControlConfiguration.slot0.kD = 0;
 
     ArmControl.getAllConfigs(ArmControlConfiguration);
-    
-    ArmControl.setNeutralMode(NeutralMode.Brake);
-
-    
   }
 
   @Override
