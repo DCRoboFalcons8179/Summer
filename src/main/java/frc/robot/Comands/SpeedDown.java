@@ -21,7 +21,7 @@ public class SpeedDown extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    double speed = Constants.Arm.speed + this.speed < -1 ? -1 : Constants.Arm.speed + this.speed;
+    double speed = Constants.Arm.speed + this.speed < 0 ? 0 : Constants.Arm.speed + this.speed;
 
     Constants.Arm.speed = speed;
   }

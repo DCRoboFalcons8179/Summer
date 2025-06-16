@@ -35,10 +35,10 @@ public class RobotContainer {
   }
 
   private void buttonComands() {
-    xboxController.a().whileTrue(new ArmMove(() -> 0.5, armControl));
+    xboxController.a().whileTrue(new ArmMove(() -> Constants.Arm.speed, armControl));
     xboxController.a().whileFalse(new ArmMove(() -> 0, armControl));
     
-    xboxController.b().whileTrue(new ArmMove(() -> -0.5, armControl));
+    xboxController.b().whileTrue(new ArmMove(() -> -Constants.Arm.speed, armControl));
     xboxController.b().whileFalse(new ArmMove(() -> 0, armControl));
 
     xboxController.povUp().onTrue(new SpeedUp(0.05));
