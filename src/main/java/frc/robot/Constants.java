@@ -9,6 +9,6 @@ public class Constants {
         public static final double kD = 0;
         public static double speed = 0.1;
 
-        public static final double maxSpeed = 0.8;
+        public static final double maxSpeed = 0.5;
     }
 }
