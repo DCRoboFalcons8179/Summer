@@ -4,13 +4,9 @@
 
 package frc.robot;
 
-import java.util.function.DoubleSupplier;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Comands.ArmMove;
 import frc.robot.Subsystems.ArmControl;
 
@@ -19,25 +15,21 @@ public class RobotContainer {
     configureBindings();
   }
 
-
-  private final ArmMove armMove = new ArmMove();
   private final ArmControl armControl = new ArmControl();
-
-  private final XboxController m_driveControler = new XboxController(0);
-
-  private final JoystickButton aButton = new JoystickButton(m_driveControler, XboxController.Button.kA.value);
+  
+  private final CommandXboxController xboxController = new CommandXboxController(Constants.controllerPort);
 
   private void configureBindings() {
-aButton.whileTrue(new ArmMove(() -> 0.5, armControl));
-        aButton.whileFalse(new ArmMove(() -> 0, armControl));
-
+    buttonComands();
   }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
+
   private void buttonComands() {
-    
-          }
+    xboxController.a().whileTrue(new ArmMove(() -> 0.5, armControl));
+    xboxController.a().whileFalse(new ArmMove(() -> 0, armControl));    
+  }
 
 }

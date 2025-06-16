@@ -5,24 +5,26 @@
 package frc.robot.Subsystems;
 
 
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class ArmControl extends SubsystemBase {
   /** Creates a new ArmControl. */
 
-  TalonSRX ArmControl = new TalonSRX(14);
+  TalonSRX armControl = new TalonSRX(14);
 
   public ArmControl() {
-    TalonSRXConfiguration ArmControlConfiguration = new TalonSRXConfiguration();
+    TalonSRXConfiguration armControlConfiguration = new TalonSRXConfiguration();
   
-    ArmControlConfiguration.slot0.kP = 1;
-    ArmControlConfiguration.slot0.kI = 0;
-    ArmControlConfiguration.slot0.kD = 0;
+    armControlConfiguration.slot0.kP = Constants.Arm.kP;
+    armControlConfiguration.slot0.kI = Constants.Arm.kI;
+    armControlConfiguration.slot0.kD = Constants.Arm.kD;
 
-    ArmControl.getAllConfigs(ArmControlConfiguration);
+    armControl.getAllConfigs(armControlConfiguration);
   }
 
   @Override
@@ -30,7 +32,11 @@ public class ArmControl extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void Move(double power){
-    
+  public void movePercentOut(double power){
+    armControl.set(TalonSRXControlMode.PercentOutput, power);
+  }
+
+  public void movePosition(double position) {
+    armControl.set(TalonSRXControlMode.Position, position);
   }
 }
