@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -25,10 +26,12 @@ public class ArmControl extends SubsystemBase {
     armControlConfiguration.slot0.kD = Constants.Arm.kD;
 
     armControl.getAllConfigs(armControlConfiguration);
+    armControl.setSelectedSensorPosition(0);
   }
 
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Arm Position", armControl.getSelectedSensorPosition());
     // This method will be called once per scheduler run
   }
 
